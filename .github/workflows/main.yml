@@ -21,7 +21,7 @@ jobs:
         run: docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
 
       - name: Build and tag Docker image
-        run: docker build -t your-dockerhub-username/myubuntulinux:latest .
+        run: docker build -t $DOCKER_HUB_USERNAME/myubuntulinux:latest .
       
       - name: Push Docker image to Docker Hub
-        run: docker push your-dockerhub-username/myubuntulinux:latest
+        run: docker push $DOCKER_HUB_USERNAME/myubuntulinux:latest
