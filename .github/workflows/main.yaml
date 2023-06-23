@@ -1,0 +1,27 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOCKER_HUB_USERNAME: 46076516
+  DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+
+      - name: Build and tag Docker image
+        run: docker build -t your-dockerhub-username/myubuntulinux:latest .
+      
+      - name: Push Docker image to Docker Hub
+        run: docker push your-dockerhub-username/myubuntulinux:latest
