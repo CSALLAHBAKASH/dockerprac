@@ -5,15 +5,15 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - /path/to/your/notebooks:/home/jovyan/notebooks
+      - /workspaces/dockerprac/notebooks:/home/ali/notebooks
     networks:
       - mynetwork
 
   mysql:
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: [password]
-      MYSQL_DATABASE: [database]
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
     networks:
       - mynetwork
 
